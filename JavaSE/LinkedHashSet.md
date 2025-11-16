@@ -1,0 +1,4 @@
+
+#### LinkedHashSet extends HashSet
+- 在父类的基础上额外维护了以元素添加顺序的双向链表，输出LinkedHashSet是以元素添加顺序进行的，用before和after进行双向链表节点之间的跳转，next还是用于单个索引位置冲突指向的单链表列表的存放。
+- LinkedHashSet容量创建底层由LinkedHashMap创建，默认为16
