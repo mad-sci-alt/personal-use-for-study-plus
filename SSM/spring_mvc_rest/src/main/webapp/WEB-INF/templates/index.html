@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>首页</h1>
+<h1>index.html</h1>
+<!-- a标签只支持get方式的资源请求方式，即使写上methods="post"也会被忽略 -->
+<a th:href="@{/employee}" methods="post">查询所有的员工信息</a>
+</body>
+</html>

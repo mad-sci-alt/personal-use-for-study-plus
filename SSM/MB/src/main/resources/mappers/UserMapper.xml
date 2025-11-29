@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atzsh.mybatis.mapper.UserMapper">
+    <!-- void insertUser(@Param("username") String username, @Param("pw") String pw); -->
+    <insert id="insertUser">
+        insert into test (username, pw)
+        values (#{username}, #{pw})
+    </insert>
+
+    <!-- void deleteAllUser(); -->
+    <delete id="deleteAllUser">
+        delete from test
+    </delete>
+
+    <!-- void deleteUserByName(String username); -->
+    <delete id="deleteUserByName">
+        delete from test
+        <where>
+            username = #{username}
+        </where>
+    </delete>
+
+    <!-- void updateUser(@Param("username")String username ,@Param("newname") String newname); -->
+    <update id="updateUser">
+        update test
+        <where>
+            username = #{username}
+        </where>
+        <set>
+            <if test="newname != null">
+                username = #{newname}
+            </if>
+        </set>
+    </update>
+
+    <!-- void setPwById(@Param("id")Integer id, @Param("pw")String pw); -->
+    <update id="setPwById">
+        update test
+        <set>pw = #{pw}</set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <!-- void insertUser(User user); -->
+    <insert id="insertFullUser">
+        insert into test
+        values (null, #{username}, #{password}, #{age}, #{gender}, #{email})
+    </insert>
+
+    <!-- void deleteMoreUserById(@Param("ids")String ids); -->
+    <delete id="deleteMoreUserById">
+        delete from test
+        <where>
+            <!-- id in (#{ids})这样写是不对的因为#在任何情况下都会固定将代替的内容加上引号，
+            因此井号也并非任何地方无脑用的 -->
+            id in (${ids})
+        </where>
+    </delete>
+
+    <!-- useGeneratedKeys为true表示当前添加功能使用自增的主键
+         keyProperties将自增的主键值保存在user对象中的id属性中
+         tips：为什么不将主键值作为resultType返回，因为添加功能的返回值默认是受到影响的行数，因此只能放在实体的属性中
+     -->
+    <!-- void insertUserReturnId(User user); -->
+    <insert id="insertUserReturnId" useGeneratedKeys="true" keyProperty="id">
+        insert into test
+        values (null, #{username}, #{password}, #{age}, #{gender}, #{email})
+    </insert>
+
+    <!-- void insertMoreUser(List<User> users); -->
+    <insert id="insertMoreUser">
+        insert into test values
+        <foreach collection="users" item="user" separator=",">
+            (null, #{user.username}, #{user.password}, #{user.age}, #{user.gender}, #{user.email})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Info</title>
+    <link rel="stylesheet" th:href="@{/static/css/index_work.css}">
+</head>
+<body>
+<table >
+    <tr>
+        <th colspan="5">Employee list</th>
+    </tr>
+    <th>id</th>
+    <th>lastName</th>
+    <th>email</th>
+    <th>gender</th>
+    <th>options（<a th:href="@{/to/add}">add</a>）</th>
+    </tr>
+    <tr th:each="employee : ${employeeList}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.gender}"></td>
+        <td>
+            <a @click="deleteEmployee()" th:href="@{'/employee/'+${employee.id}}">delete</a>
+            <a th:href="@{'/employee/'+${employee.id}}">update</a>
+        </td>
+    </tr>
+
+</table>
+
+<!-- 作用：通过超链接控制表单的提交，将post请求转换为delete请求 -->
+<!--<form id="delete_form" method="post">-->
+    <!-- HiddenHttpMethodFilter要求：必须传输_method请求参数，并且值为最终的请求方式 -->
+<!--    <input type="hidden" name="_method" value="delete"/>-->
+<!--</form>-->
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <!-- 一、外链式bean-->
+    <bean id="clazzOne" class="com.atzsh.spring.pojo.Clazz">
+        <property name="cid" value="1"></property>
+        <property name="cname" value="天才少年班"></property>
+    </bean>
+    <bean id="clazzTwo" class="com.atzsh.spring.pojo.Clazz">
+        <property name="cid" value="2"></property>
+        <property name="cname" value="JavaEE速成"></property>
+    </bean>
+    <bean id="studentOne" class="com.atzsh.spring.pojo.Student">
+        <property name="sid" value="1"></property>
+        <property name="sname" value="lpx"></property>
+        <property name="age" value="18"></property>
+        <property name="gender" value="男"></property>
+        <property name="teacherMap" ref="stuToTeacher"/>
+        <!--  ref的用法：将当前类中的一个引用类型属性（一个属性对应多个属性）用另一个bean注入 -->
+        <property name="clazz" ref="clazzOne"></property>
+    </bean>
+    <!--    <bean id="studentNull" class="com.atzsh.spring.pojo.Student">-->
+    <!--        <property name="sname">-->
+    <!--            <null/>
+    注意在赋空值时只能这样用null标签不能赋给value标签为null，这样是复制"null"字符串-->
+    <!--        </property>-->
+    <!--    </bean>-->
+    <!-- 二、内嵌式bean-->
+    <bean id="studentTwo" class="com.atzsh.spring.pojo.Student">
+        <property name="sid" value="2"></property>
+        <property name="sname" value="赵二狗"></property>
+        <property name="age" value="99"></property>
+        <property name="gender" value="未知"></property>
+        <property name="clazz">
+            <bean id="innerClazz" class="com.atzsh.spring.pojo.Clazz">
+                <property name="cid" value="1"></property>
+                <property name="cname" value="前程无忧班"></property>
+            </bean>
+        </property>
+    </bean>
+    <!-- 三、级联属性赋值 (类名.属性名)-->
+    <bean id="studentThree" class="com.atzsh.spring.pojo.Student">
+        <property name="sid" value="3"></property>
+        <property name="sname" value="王五"></property>
+        <property name="age" value="55"></property>
+        <property name="gender" value="女"></property>
+        <property name="clazz" ref="clazzOne"></property>
+        <property name="clazz.cid" value="3"></property>
+        <property name="clazz.cname" value="最强王者班"></property>
+    </bean>
+    <!--  数组类型属性赋值-->
+    <bean id="studentWithHobby" class="com.atzsh.spring.pojo.Student">
+        <property name="sid" value="4"></property>
+        <property name="sname" value="李四"></property>
+        <property name="gender" value="女"></property>
+        <property name="age" value="44"></property>
+        <property name="clazz" ref="clazzOne"></property>
+        <property name="clazz.cname" value="狗都不去班"></property>
+        <property name="hobbies">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+    </bean>
+    <!--  练习  -->
+    <bean id="studentFive" class="com.atzsh.spring.pojo.Student">
+        <property name="sid" value="5"></property>
+        <property name="sname" value="废物"></property>
+        <property name="gender" value="废物也有性别？"></property>
+        <property name="age" value="18"></property>
+        <property name="clazz" ref="clazzTwo"></property>
+        <property name="hobbies">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+    </bean>
+    <!--  集合类型属性赋值  -->
+    <bean id="classThree" class="com.atzsh.spring.pojo.Clazz">
+        <property name="cid" value="3"></property>
+        <property name="cname" value="宇宙级火箭"></property>
+        <!--        <property name="studentList">-->
+        <!--            <list>-->
+        <!--&lt;!&ndash;                <ref bean="studentOne"></ref>&ndash;&gt;-->
+        <!--&lt;!&ndash;                <ref bean="studentTwo"></ref>&ndash;&gt;-->
+        <!--&lt;!&ndash;                <ref bean="studentThree"></ref>&ndash;&gt;-->
+        <!--            </list>-->
+        <!--        </property>-->
+        <property name="studentList" ref="stuList"></property>
+    </bean>
+
+    <bean id="teacherOne" class="com.atzsh.spring.pojo.Teacher">
+        <property name="teacherId" value="1001"></property>
+        <property name="teacherName" value="大宝"></property>
+    </bean>
+    <bean id="teacherTwo" class="com.atzsh.spring.pojo.Teacher">
+        <property name="teacherId" value="1002"></property>
+        <property name="teacherName" value="二宝"></property>
+    </bean>
+    <bean id="teacherThree" class="com.atzsh.spring.pojo.Teacher">
+        <property name="teacherId" value="1003"></property>
+        <property name="teacherName" value="三宝"></property>
+    </bean>
+    <!--创建新类用map整合各个实体 -->
+    <bean id="studentSix" class="com.atzsh.spring.pojo.Student">
+        <property name="sid" value="01"></property>
+        <property name="sname" value="你的牛至"></property>
+        <property name="teacherMap" ref="stuToTeacher">
+            <!--            <map>-->
+            <!--                <entry>-->
+            <!--                    <key>-->
+            <!--                        <value>10010</value>-->
+            <!--                    </key>-->
+            <!--                    <ref bean="teacherOne"></ref>-->
+            <!--                </entry>-->
+            <!--                <entry>-->
+            <!--                    <key>-->
+            <!--                        <value>10020</value>-->
+            <!--                    </key>-->
+            <!--                    <ref bean="teacherTwo"></ref>-->
+            <!--                </entry>-->
+            <!--                <entry>-->
+            <!--                    <key>-->
+            <!--                        <value>10030</value>-->
+            <!--                    </key>-->
+            <!--                    <ref bean="teacherThree"></ref>-->
+            <!--                </entry>-->
+            <!--            </map>-->
+        </property>
+    </bean>
+    <!--配置一个集合类型的bean，需要使用util的约束-->
+    <util:list id="stuList">
+        <ref bean="studentOne"></ref>
+        <ref bean="studentTwo"></ref>
+        <ref bean="studentThree"></ref>
+    </util:list>
+    <util:map id="stuToTeacher">
+        <entry key="1001" value-ref="teacherOne"/>
+        <entry key="1002" value-ref="teacherTwo">
+            <!--            <key>-->
+            <!--                <value>10020</value>-->
+            <!--            </key>-->
+            <!--            <ref bean="teacherTwo"></ref>-->
+        </entry>
+        <entry key="1003" value-ref="teacherThree"/>
+    </util:map>
+
+    <bean id="stuDetails" class="com.atzsh.spring.pojo.StudentInfo">
+        <property name="student" ref="studentOne"></property>
+        <property name="clazz" ref="clazzOne"></property>
+    </bean>
+
+    <bean id="studentSeven" class="com.atzsh.spring.pojo.Student"
+          p:sid="1005" p:sname="小明" p:teacherMap-ref="stuToTeacher"></bean>
+
+</beans>

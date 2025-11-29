@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atzsh.mybatis.mapper.SelectMapper">
+    <!--    User loginCheck(@Param("username")String username,@Param("pw")String pw);-->
+    <select id="loginCheck" resultType="User">
+        select * from test t
+        <where>
+            -- t.username = '${username}' and t.pw = '${pw}'
+            t.username = #{param1} and t.pw = #{param2}
+        </where>
+    </select>
+    <!--    User loginCheckByMap(Map<String,Object> user);-->
+    <select id="loginCheckByMap" resultType="User">
+        select *
+        from test t
+        <where>
+            t.username = #{username} and t.pw = #{pw}
+        </where>
+    </select>
+    <!--    User selectUserById(int id);-->
+    <select id="selectUserById" resultType="User">
+        select * from test
+        <where>
+            id = #{id}
+        </where>
+        order by id desc
+    </select>
+    <!--    List<User> selectAllUser();-->
+    <select id="selectAllUser" resultType="User">
+        select *
+        from test
+    </select>
+    <!--    User getCount();-->
+    <select id="getCount" resultType="Integer">
+        select count(*)
+        from test
+    </select>
+    <!--    Map<String,Object> getCountByIdToMap(@Param("id") Integer id);-->
+    <select id="getCountByIdToMap" resultType="map">
+        select *
+        from test
+        <where>
+            id = #{id}
+        </where>;
+    </select>
+    <!--    Map<String,Object> getAllUserToMap(@Param("id") Integer id);-->
+    <select id="getMultiUserToMap" resultType="map">
+        select *
+        from test
+        <where>
+            username = #{name}
+        </where>;
+    </select>
+    <!--    List<User> getUserByLike(@Param("mohu") String mohu);-->
+    <select id="getUserByLike" resultType="user">
+        select *
+        from test
+        <where>
+            <!--三种模糊表达均可但不能搞混了，最后一种是推荐的写法用双引号将百分号（模糊部分）引入-->
+            <!-- username like '%${mohu}%'-->
+            <!-- username like concat('%',#{mohu},'%')-->
+            username like "%"#{mohu}"%"
+        </where>
+    </select>
+</mapper>

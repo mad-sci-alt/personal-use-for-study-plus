@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        body{
+            background-color: #c2c2c2;
+        }
+        div#submit{
+            margin-left: 40%;
+        }
+    </style>
+</head>
+<body>
+<h1>login.html</h1>
+<!--当前请求方式为POST方式的话超链接会报错405,以后看到405页面就可以直接知道当前请求方式不被允许-->
+<a th:href="@{/success}">测试SpringMVC</a>
+<br>
+<a href="/success">测试绝对路径</a>
+<br>
+<a th:href="@{/succeed}">测试RequestMapping的value功能</a>
+<br>
+<!--除了以表单的方式可以用post请求的方式跳转，其他方式都不可以通过post跳转（包括href超链接和直接键入地址）-->
+<!--思考：因此表单提交的post的请求方式常常用在需要安全性有保障的分级操作，比如购买等等，必须按照流程严格走完付款流程-->
+<form th:action="@{/success}" method="get">
+    <input type="submit" value="测试RequestMapping的method属性">
+</form>
+<a th:href="@{/success(username='admin',password='12345')}">测试RequestMapping的params用法</a>
+<br>
+<br>
+<br>
+<div id="submit">
+    <form th:action="@{/testpojo}" method="post">
+        用户名：<input type="text" name="username">
+        <br>
+        密码：<input type="password" name="password">
+        <br>
+        性别：<input type="radio" name="sex" value="男">男
+        <input type="radio" name="sex" value="女">女
+        <br>
+        年龄：<input type="text" name="age"><br>
+        邮箱：<input type="text" name="email">
+        <br>
+        <input type="submit" value="注册">
+    </form>
+</div>
+</body>
+</html>
