@@ -1,0 +1,79 @@
+autoDeleteData: false
+autoDetectedPackages:
+- Class_
+- CollectionHomework
+- CpuThread
+- DesignMode
+- EncapFound
+- Encapsulation
+- Enum
+- Exception
+- Final
+- HandWriteClass
+- HouseRentDesign
+- IOStream
+- InetAddress_
+- JUnit_
+- List_
+- LockUse
+- Map_
+- MathClass
+- Properties_
+- Set_
+- SimulatePackagedStream
+- TankGame
+- Test_
+- ThreadUse_
+- abstract_
+- annotation
+- arrays_
+- big_num
+- class_and_object
+- collection_
+- constructor
+- draw_
+- event_
+- generic
+- homework
+- innerclass
+- input
+- judge
+- main
+- modifier
+- operator
+- reader_
+- reflection_
+- socket_.TCPprogramming
+- socket_.UDPprogramming
+- socket_.homework
+- writer_
+autoKeepDataNum: 10
+enableAutoDetect: true
+entryDisplayConfig:
+  excludedPathPatterns: []
+  skipJsCss: true
+funcDisplayConfig:
+  skipConstructors: false
+  skipFieldAccess: true
+  skipFieldChange: true
+  skipGetters: false
+  skipNonProjectPackages: false
+  skipPrivateMethods: false
+  skipSetters: false
+ignoreSameClassCall: null
+ignoreSamePackageCall: null
+includedPackagePrefixes: null
+includedParentClasses: null
+maxColSize: 32
+maxNumFirst: 12
+maxNumFirstImportant: 1024
+maxNumHash: 3
+maxNumHashImportant: 256
+maxObjectDepth: 4
+maxStrSize: 4096
+name: xcodemap-filter
+openMainWindow: true
+recordMode: manual
+sourceDisplayConfig:
+  color: blue
+startOnDebug: false
