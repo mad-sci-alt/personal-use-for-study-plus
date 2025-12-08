@@ -1,0 +1,11 @@
+{
+	"nodes":[
+		{"id":"485978f403dca328","x":-140,"y":-200,"width":100,"height":60,"type":"text","text":"==创建态=="},
+		{"id":"632f8de3cfd57d7e","x":-340,"y":20,"width":100,"height":60,"type":"text","text":"==就绪态=="},
+		{"id":"08b12319e93eadb2","x":-120,"y":180,"width":95,"height":60,"type":"text","text":"==运行态=="}
+	],
+	"edges":[
+		{"id":"02b5006e90bf4c65","fromNode":"632f8de3cfd57d7e","fromSide":"bottom","toNode":"08b12319e93eadb2","toSide":"left","label":"cpu开始"},
+		{"id":"aad6fda7451c027f","fromNode":"485978f403dca328","fromSide":"left","toNode":"632f8de3cfd57d7e","toSide":"top","label":"进程所需所有资源分配到位，只差cpu调度"}
+	]
+}
