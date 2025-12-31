@@ -1,11 +1,11 @@
 {
 	"nodes":[
-		{"id":"485978f403dca328","x":-140,"y":-200,"width":100,"height":60,"type":"text","text":"==创建态=="},
-		{"id":"632f8de3cfd57d7e","x":-360,"y":20,"width":100,"height":60,"type":"text","text":"==就绪态=="},
-		{"id":"cc16fa7a92240b31","x":-135,"y":200,"width":95,"height":60,"type":"text","text":"==阻塞态=="},
-		{"id":"08b12319e93eadb2","x":-60,"y":20,"width":95,"height":60,"type":"text","text":"==运行态=="},
-		{"id":"ba56e29f4a536670","x":260,"y":20,"width":100,"height":60,"type":"text","text":"==终止态=="},
-		{"id":"4b4d5533837bfc40","x":-260,"y":300,"width":325,"height":140,"type":"text","text":"tips：阻塞态无法直接到运行态，这是由进程的顺序秩序决定的，未被cpu调度的就绪态进程也不可能直接到主动等待（阻塞），总结：运行->阻塞->就绪是单向的，不可逆"}
+		{"id":"485978f403dca328","type":"text","text":"==创建态==","x":-140,"y":-200,"width":100,"height":60},
+		{"id":"632f8de3cfd57d7e","type":"text","text":"==就绪态==","x":-360,"y":20,"width":100,"height":60},
+		{"id":"cc16fa7a92240b31","type":"text","text":"==阻塞态==","x":-135,"y":200,"width":95,"height":60},
+		{"id":"08b12319e93eadb2","type":"text","text":"==运行态==","x":-60,"y":20,"width":95,"height":60},
+		{"id":"ba56e29f4a536670","type":"text","text":"==终止态==","x":260,"y":20,"width":100,"height":60},
+		{"id":"4b4d5533837bfc40","type":"text","text":"tips：阻塞态无法直接到运行态，这是由进程的顺序秩序决定的，未被cpu调度的就绪态进程也不可能直接到主动等待（阻塞），总结：运行->阻塞->就绪是单向的，不可逆","x":-260,"y":300,"width":325,"height":140}
 	],
 	"edges":[
 		{"id":"02b5006e90bf4c65","fromNode":"632f8de3cfd57d7e","fromSide":"right","toNode":"08b12319e93eadb2","toSide":"left","fromEnd":"arrow","label":"cpu分配给进程s->r\n时间片用完/被抢占r->s"},
