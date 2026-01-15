@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/* 
+  优化版：Obsidian Metadata 多彩标签样式
+  - 只需修改下面的 --pill-bg-N 和 --pill-hover-N 变量即可定制你的调色板。
+*/
+
+/* 在所有非tags的metadata属性上统一定义颜色变量 */
+.metadata-property:not([data-property-key="tags"]) {
+    /* --- 色板3: 大地色系 / Earth Tones --- */
+    /* AA=33 表示20%透明度, AA=40 表示25%透明度 */
+    --pill-bg-1: #a98c7833; --pill-hover-1: #a98c7840; /* Clay Brown */
+    --pill-bg-2: #d8c3a533; --pill-hover-2: #d8c3a540; /* Almond */
+    --pill-bg-3: #8e8d8a33; --pill-hover-3: #8e8d8a40; /* Stone Grey */
+    --pill-bg-4: #e9807433; --pill-hover-4: #e9807440; /* Terracotta */
+    --pill-bg-5: #e85a4f33; --pill-hover-5: #e85a4f40; /* Rust Red */
+    --pill-bg-6: #d8ae4733; --pill-hover-6: #d8ae4740; /* Ochre */
+    --pill-bg-7: #a49e8d33; --pill-hover-7: #a49e8d40; /* Khaki Grey */
+    --pill-bg-8: #e6b47c33; --pill-hover-8: #e6b47c40; /* Sandy Brown */
+}
+
+/* 基础样式：确保内边距和背景填充正确 */
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill {
+    --pill-padding-x: var(--tag-padding-x);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill::after {
+    width: 100% !important;
+    left: 0 !important;
+}
+
+/* 颜色循环：现在只需引用变量，代码非常整洁 */
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+1) {
+    --pill-background: var(--pill-bg-1);
+    --pill-background-hover: var(--pill-hover-1);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+2) {
+    --pill-background: var(--pill-bg-2);
+    --pill-background-hover: var(--pill-hover-2);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+3) {
+    --pill-background: var(--pill-bg-3);
+    --pill-background-hover: var(--pill-hover-3);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+4) {
+    --pill-background: var(--pill-bg-4);
+    --pill-background-hover: var(--pill-hover-4);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+5) {
+    --pill-background: var(--pill-bg-5);
+    --pill-background-hover: var(--pill-hover-5);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+6) {
+    --pill-background: var(--pill-bg-6);
+    --pill-background-hover: var(--pill-hover-6);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+7) {
+    --pill-background: var(--pill-bg-7);
+    --pill-background-hover: var(--pill-hover-7);
+}
+
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill:nth-child(8n+8) {
+    --pill-background: var(--pill-bg-8);
+    --pill-background-hover: var(--pill-hover-8);
+}
