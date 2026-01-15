@@ -1,0 +1,356 @@
+@charset "UTF-8";
+/* @settings
+name: 【杰森的效率工坊】高级感表格样式
+id: jason-effi-lab-table-styles
+settings:
+    - 
+        id: jason-table-border-style-class
+        title: 表格边框样式
+        description: "选择表格线条的显示方式"
+        type: class-select
+        allowEmpty: false
+        default: jason-border-style-solid
+        options:
+            - 
+                label: 实线 (Solid)
+                value: jason-border-style-solid
+            - 
+                label:  虚线 (Dotted)
+                value: jason-border-style-dotted
+    -
+        id: jason-table-border-color-class
+        title: 表格边框颜色
+        description: "为表格线条选择一个心仪的颜色"
+        type: class-select
+        allowEmpty: false
+        default: jason-border-color-default
+        options:
+            -
+                label: 默认灰 (Default Gray)
+                value: jason-border-color-default
+            -
+                label: 烟波蓝 (Smoky Blue)
+                value: jason-border-color-smoky-blue
+            -
+                label: 丁香紫 (Lilac Purple)
+                value: jason-border-color-lilac-purple
+            -
+                label: 冰川蓝 (Glacier Blue)
+                value: jason-border-color-glacier-blue
+            -
+                label: 鼠尾草绿 (Sage Green)
+                value: jason-border-color-sage-green
+            -
+                label: 暖砂色 (Warm Sand)
+                value: jason-border-color-warm-sand
+    -
+        id: jason-table-alt-row-color
+        title: 启用交替行颜色
+        description: "为表格行启用交替的背景色，增强可读性"
+        type: class-toggle
+        addCommand: true
+        default: true
+    - 
+        id: jason-table-header-color-class
+        title: 表格头部颜色
+        description: "选择一系列更具高级感的表头配色"
+        type: class-select
+        allowEmpty: false
+        default: jason-header-color-deep-gray
+        options:
+            - 
+                label: 深邃灰 (Deep Gray)
+                value: jason-header-color-deep-gray
+            - 
+                label: 石墨黑 (Graphite Black)
+                value: jason-header-color-graphite-black
+            - 
+                label: 莫兰迪蓝 (Morandi Blue)
+                value: jason-header-color-morandi-blue
+            - 
+                label: 橄榄绿 (Olive Green)
+                value: jason-header-color-olive-green
+            - 
+                label: 灰豆绿 (Gray Bean Green)
+                value: jason-header-color-gray-bean-green
+            - 
+                label: 墨水青 (Ink Teal)
+                value: jason-header-color-ink-teal
+            - 
+                label: 赤陶橘 (Terracotta Orange)
+                value: jason-header-color-terracotta-orange
+            - 
+                label: 杏仁黄 (Almond Yellow)
+                value: jason-header-color-almond-yellow
+            - 
+                label: 鼠尾草绿 (Sage Green)
+                value: jason-header-color-sage-green
+            - 
+                label: 冰川蓝 (Glacier Blue)
+                value: jason-header-color-glacier-blue
+            - 
+                label: 烟波蓝 (Smoky Blue)
+                value: jason-header-color-smoky-blue
+            - 
+                label: 丁香紫 (Lilac Purple)
+                value: jason-header-color-lilac-purple
+            -
+                label: 烟粉色 (Dusty Rose)
+                value: jason-header-color-dusty-rose
+            -
+                label: 可可棕 (Cocoa Brown)
+                value: jason-header-color-cocoa-brown
+*/
+
+/* --- 基础及变量定义 --- */
+.theme-light,
+.theme-dark {
+    --jason-border-color-light-default: #e0e0e0;
+    --jason-border-color-dark-default: #4a4a4a;
+    --table-header-background-hover: var(--table-header-background);
+    --table-cell-vertical-alignment: middle;
+
+    /* 当启用交替行颜色时，定义其背景色变量 */
+    &.jason-table-alt-row-color {
+        --table-row-alt-background: var(--background-secondary);
+    }
+}
+
+.theme-light {
+    --jason-table-row-hover-color: rgba(0, 0, 0, 0.07);
+    /* 亮色模式下的悬停颜色：半透明黑色 */
+}
+
+.theme-dark {
+    --table-header-color: white;
+    --jason-table-row-hover-color: rgba(255, 255, 255, 0.09);
+    /* 暗色模式下的悬停颜色：半透明白色 */
+}
+
+/* --- 边框样式及颜色控制 --- */
+.markdown-preview-view table,
+.markdown-source-view.is-live-preview table {
+    border-collapse: collapse;
+}
+
+.markdown-preview-view table td,
+.markdown-preview-view table th,
+.markdown-source-view.is-live-preview table td,
+.markdown-source-view.is-live-preview table th {
+    border-width: 1px;
+    border-color: var(--table-border-color);
+}
+
+/* 边框样式 */
+.jason-border-style-solid .markdown-preview-view table td,
+.jason-border-style-solid .markdown-preview-view table th,
+.jason-border-style-solid .markdown-source-view.is-live-preview table td,
+.jason-border-style-solid .markdown-source-view.is-live-preview table th {
+    border-style: solid;
+}
+
+.jason-border-style-dotted .markdown-preview-view table td,
+.jason-border-style-dotted .markdown-preview-view table th,
+.jason-border-style-dotted .markdown-source-view.is-live-preview table td,
+.jason-border-style-dotted .markdown-source-view.is-live-preview table th {
+    border-style: dotted;
+}
+
+/* 边框颜色 */
+.jason-border-color-default.theme-light {
+    --table-border-color: var(--jason-border-color-light-default);
+}
+
+.jason-border-color-default.theme-dark {
+    --table-border-color: var(--jason-border-color-dark-default);
+}
+
+.jason-border-color-smoky-blue {
+    --table-border-color: #81a1c1;
+}
+
+.jason-border-color-lilac-purple {
+    --table-border-color: #b48ead;
+}
+
+.jason-border-color-glacier-blue {
+    --table-border-color: #88c0d0;
+}
+
+.jason-border-color-sage-green {
+    --table-border-color: #a3be8c;
+}
+
+.jason-border-color-warm-sand {
+    --table-border-color: #d7cec7;
+}
+
+
+/* --- 表头颜色配置 --- */
+.jason-header-color-deep-gray {
+    &.theme-light {
+        --table-header-background: #f1f3f5;
+    }
+
+    &.theme-dark {
+        --table-header-background: #343a40;
+    }
+}
+
+.jason-header-color-graphite-black {
+    &.theme-light {
+        --table-header-background: #e9ecef;
+    }
+
+    &.theme-dark {
+        --table-header-background: #212529;
+    }
+}
+
+.jason-header-color-morandi-blue {
+    &.theme-light {
+        --table-header-background: #dbe4ff;
+    }
+
+    &.theme-dark {
+        --table-header-background: #495057;
+    }
+}
+
+.jason-header-color-olive-green {
+    &.theme-light {
+        --table-header-background: #e9ecef;
+    }
+
+    &.theme-dark {
+        --table-header-background: #545B4D;
+    }
+}
+
+.jason-header-color-gray-bean-green {
+    &.theme-light {
+        --table-header-background: #eaede4;
+    }
+
+    &.theme-dark {
+        --table-header-background: #8f9779;
+    }
+}
+
+.jason-header-color-ink-teal {
+    &.theme-light {
+        --table-header-background: #e0eff0;
+    }
+
+    &.theme-dark {
+        --table-header-background: #006a6e;
+    }
+}
+
+.jason-header-color-terracotta-orange {
+    &.theme-light {
+        --table-header-background: #fbe9e2;
+    }
+
+    &.theme-dark {
+        --table-header-background: #d08770;
+    }
+}
+
+.jason-header-color-almond-yellow {
+    &.theme-light {
+        --table-header-background: #fcf6e7;
+    }
+
+    &.theme-dark {
+        --table-header-background: #ebcb8b;
+    }
+}
+
+.jason-header-color-sage-green {
+    &.theme-light {
+        --table-header-background: #eff5e9;
+    }
+
+    &.theme-dark {
+        --table-header-background: #a3be8c;
+    }
+}
+
+.jason-header-color-glacier-blue {
+    &.theme-light {
+        --table-header-background: #e8f5f8;
+    }
+
+    &.theme-dark {
+        --table-header-background: #88c0d0;
+    }
+}
+
+.jason-header-color-smoky-blue {
+    &.theme-light {
+        --table-header-background: #e6eef4;
+    }
+
+    &.theme-dark {
+        --table-header-background: #81a1c1;
+    }
+}
+
+.jason-header-color-lilac-purple {
+    &.theme-light {
+        --table-header-background: #f3e8f0;
+    }
+
+    &.theme-dark {
+        --table-header-background: #b48ead;
+    }
+}
+
+.jason-header-color-dusty-rose {
+    &.theme-light {
+        --table-header-background: #f5eaf5;
+    }
+
+    &.theme-dark {
+        --table-header-background: #c8a2c8;
+    }
+}
+
+.jason-header-color-cocoa-brown {
+    &.theme-light {
+        --table-header-background: #f2ebe9;
+    }
+
+    &.theme-dark {
+        --table-header-background: #7b5e57;
+    }
+}
+
+
+/* --- 通用表格优化 --- */
+table:not(.dataview):not(.ab-table-timeline) {
+    tbody tr td:has(span>img) {
+        text-align: center !important;
+        vertical-align: middle;
+    }
+
+    thead th {
+        text-align: center !important;
+        height: 100% !important;
+    }
+
+    .table-cell-wrapper>.cm-s-obsidian>.cm-editor .cm-gutters {
+        display: none;
+    }
+
+    td[colspan] {
+        text-align: center !important;
+    }
+}
+
+/* --- 悬停效果优化 (Hover Effect Enhancement) --- */
+.markdown-preview-view table:not(.dataview) tbody tr:hover,
+.markdown-source-view.is-live-preview table:not(.dataview) tbody tr:hover {
+    background-color: var(--jason-table-row-hover-color) !important;
+}
