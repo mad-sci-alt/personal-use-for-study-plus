@@ -1,6 +1,7 @@
 {
   "enabledCssSnippets": [
     "folder-color-version2",
-    "table-style"
+    "table-style",
+    "notion-like-metadata"
   ]
 }
